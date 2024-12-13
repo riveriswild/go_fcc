@@ -295,6 +295,69 @@ func getAnimal() {
 	fmt.Printf("Dog's breed is %v and dog's name is %v\n", dog.Breed, dog.Name)
 }
 
+// Define a struct Product with fields Name, Price, and InStock.
+//     Create a constructor function NewProduct(name string, price float64) Product that initializes a Product with InStock set to true by default.
+//     Use this constructor to create and print a Product.
+
+type Product2 struct {
+	Name string
+	Price float64
+	InStock bool
+}
+
+func NewProduct(name string, price float64) Product2 {
+	return Product2{
+		Name: name,
+		Price: price,
+		InStock: true,
+	}
+}
+
+func getProduct2() {
+	p := NewProduct("Phone", 120.00)
+	fmt.Printf("Product name is %v, price is %v and stock is %v\n", p.Name, p.Price, p.InStock)
+}
+
+// Define a struct Author with fields Name and Country.
+// Define another struct Book with fields Title, Pages, and an Author field of type Author.
+// Add a method Description() to Book that returns a string containing all its details.
+// Instantiate a Book and call the Description() method.
+
+type Author struct {
+	Name string
+	Country string
+}
+
+type Book2 struct {
+	Title string
+	Pages uint
+	Author
+}
+
+func (b Book2) Description() string {
+	return fmt.Sprintf("Book title is %v, %v pages, author's name is %v, country is %v", b.Title, b.Pages, b.Name, b.Country)
+}
+
+func getBook2() {
+	book := Book2{
+		Title: "LOTR",
+		Pages: 1000,
+		Author: Author {
+			Name: "JRRT",
+			Country: "UK",
+		},
+	}
+	descr := book.Description()
+	fmt.Println(descr)
+}
+
+// Define a struct User with fields Name, Email, and Age.
+// Add JSON tags to the fields.
+// Serialize a User instance to JSON and print the result.
+// Deserialize the JSON back into a User struct and print its fields.
+
+
+
 func runStructs() {
 	fmt.Println("hey")
 	getBook()
@@ -309,4 +372,6 @@ func runStructs() {
 	getProfile()
 	getCircleAreaAndCirc()
 	getAnimal()
+	getProduct2()
+	getBook2()
 }
